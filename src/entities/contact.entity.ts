@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Client } from "./index";
 
 @Entity("contacts")
 export class Contact {
@@ -22,4 +23,8 @@ export class Contact {
 
     @DeleteDateColumn({ type: "date"})
     deleted_at: string | null;
+
+    @ManyToOne(() => Client, (cli) => cli.contato)
+    @JoinColumn()
+    cliente: Client
 }

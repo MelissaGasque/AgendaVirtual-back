@@ -30,7 +30,9 @@ export class Client {
     // @DeleteDateColumn({ type: "date"})
     // deleted_at: string | null;
 
-    // @OneToMany(() => Contact, (c) => c.id)
+    @OneToMany(() => Contact, (c) => c.cliente)
+    contato = Contact
+
 
     // hashPassword(){
     //     const hasRounds: number = getRounds(this.password)
