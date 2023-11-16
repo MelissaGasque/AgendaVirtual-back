@@ -13,11 +13,10 @@ export  const clientsSchema = z.object({
 });
 
 export const createClientSchema = clientsSchema.omit({
-    //Criação dos clientes
     id: true,
     created_at: true,
 })
 
-export const returnClientSchema = clientsSchema.omit({password:true})   //Retorno do create 
-export const readClientAdmSchema = returnClientSchema.array()           //leitura dos clientes
-export const updateClientSchema = createClientSchema.partial()          //alteração de dados
+export const returnClientSchema = clientsSchema.omit({password:true}) 
+export const readClientAdmSchema = returnClientSchema.array()         
+export const updateClientSchema = createClientSchema.partial()         

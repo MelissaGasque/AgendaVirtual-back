@@ -1,4 +1,4 @@
-import { clientsSchema } from "./Clients.schema";
+import { clientsSchema } from "../schemas/clients.schema";
 
 
 export const loginRequest = clientsSchema.pick({

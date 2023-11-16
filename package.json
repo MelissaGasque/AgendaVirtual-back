@@ -4,7 +4,7 @@
   "description": "Primeiro projeto Fullstack",
   "main": "index.js",
   "scripts": {
-    "test": "cross-env NODE_ENV=test SECRET_KEY=chavesecreta jest --forceExit --runInBand", 
+    "test": "cross-env NODE_ENV=test SECRET_KEY=chavesecreta jest --forceExit --runInBand",
     "dev": "ts-node-dev --rs --cls --ignore-watch node_modules src/server.ts",
     "typeorm": "typeorm-ts-node-commonjs"
   },
@@ -18,12 +18,14 @@
     "pg": "^8.11.3",
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.3.17",
+    "uuid": "^9.0.1",
     "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/express": "^4.17.21",
     "@types/node": "^20.9.0",
     "@types/pg": "^8.10.9",
+    "@types/uuid": "^9.0.7",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.2.2"
   }

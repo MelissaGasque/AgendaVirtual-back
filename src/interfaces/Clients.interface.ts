@@ -1,5 +1,5 @@
 import { z } from "zod"
-import { clientsSchema, createClientSchema, returnClientSchema, updateClientSchema } from "../schemas/Clients.schema"
+import { clientsSchema, createClientSchema, returnClientSchema, updateClientSchema } from "../schemas/clients.schema"
 
 
 type ClientsInterface = z.infer<typeof clientsSchema>

@@ -1,4 +1,4 @@
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";  //  BeforeInsert, BeforeUpdate,
 import { Contact } from "./index";
 
 @Entity("clients")
@@ -27,12 +27,11 @@ export class Client {
     @CreateDateColumn({type:"date"})
     created_at: string
 
-    // @DeleteDateColumn({ type: "date"})
-    // deleted_at: string | null;
-
     @OneToMany(() => Contact, (c) => c.cliente)
-    contato = Contact
+    contato: Contact[]
 
+    // @BeforeInsert()
+    // @BeforeUpdate()
 
     // hashPassword(){
     //     const hasRounds: number = getRounds(this.password)
