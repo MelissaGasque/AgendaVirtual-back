@@ -2,7 +2,7 @@ import { DeepPartial, Repository } from "typeorm";
 import { ClientsInterface, CreateClientInterface, ReturnClientInterface } from "../interfaces/Clients.interface";
 import { AppDataSource } from "../data_source";
 import { Client } from "../entities/index";
-import { readClientAdmSchema, returnClientSchema } from "../schemas/clients.schema";
+import { readClientAdmSchema } from "../schemas/clients.schema";
 import { AppError } from "../errors/App.errors";
 
 //Criação de Clientes
@@ -11,13 +11,13 @@ export const createClientsService = async(payload: CreateClientInterface): Promi
     const client: ReturnClientInterface = clientRepo.create(payload);
     await clientRepo.save(client)
     return client
-}
+};
 
 //Listagem dos clientes -> Apenas administradores
 export const readClientsService = async(): Promise<ReturnClientInterface[]> => {
     const clientRepo: Repository<ClientsInterface> = AppDataSource.getRepository(Client)
     return readClientAdmSchema.parse(await clientRepo.find());
-}
+};
 
 // Atualiza clientes  -> Apenas adminstradores ou dono da conta
 export const updateClientService = async(payload: DeepPartial<Client>, clientId: number ): Promise<ReturnClientInterface> => {
@@ -39,4 +39,4 @@ export const deleteClientService = async(clientId: number): Promise<void> => {
       
       await clientRepo.remove(deleteClient)
     
-}
+};

@@ -5,7 +5,7 @@ import { clientsSchema, createClientSchema, returnClientSchema, updateClientSche
 type ClientsInterface = z.infer<typeof clientsSchema>
 type CreateClientInterface = z.infer<typeof createClientSchema>
 type ReturnClientInterface = z.infer<typeof returnClientSchema>
-type ReadClientInterface = z.infer<typeof createClientSchema>
+// type ReadClientInterface = z.infer<typeof createClientSchema>
 type UpdateClientInterface = z.infer<typeof updateClientSchema>
 
-export { ClientsInterface, CreateClientInterface, ReadClientInterface, ReturnClientInterface, UpdateClientInterface }
+export { ClientsInterface, CreateClientInterface, ReturnClientInterface, UpdateClientInterface }

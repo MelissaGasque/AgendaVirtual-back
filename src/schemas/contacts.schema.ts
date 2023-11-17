@@ -10,16 +10,16 @@ export  const contactSchema = z.object({
         message: "O limite máximo de caracteres é 600"
     }),
     created_at: z.string(),
-    deleted_at: z.string().nullable()
+    // deleted_at: z.string().nullable()
 })
 
 export const createContactSchema = contactSchema.omit({
     //Criação dos contatos
     id: true,
     created_at: true,
-    deleted_at: true
+    // deleted_at: true
 })
-
+// export const returnClientSchema = contactSchema.omit({deleted_at:true}) 
 export const readContactSchema = contactSchema.array()
 //Mostrar a lista de contatos
 export const updateContactschema = createContactSchema.partial()

@@ -21,9 +21,6 @@ export class Contact {
     @CreateDateColumn({type:"date"})
     created_at: string
 
-    @DeleteDateColumn({ type: "date"})
-    deleted_at: string | null;
-
     @ManyToOne(() => Client, (cli) => cli.contato)
     @JoinColumn()
     cliente: Client
