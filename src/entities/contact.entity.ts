@@ -1,10 +1,10 @@
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Client } from "./index";
 
 @Entity("contacts")
 export class Contact {
-    @PrimaryGeneratedColumn("increment")
-    id: number;
+    @PrimaryGeneratedColumn("uuid")
+    id: string;
 
     @Column({length: 40})
     full_name: string;
@@ -21,7 +21,7 @@ export class Contact {
     @CreateDateColumn({type:"date"})
     created_at: string
 
-    @ManyToOne(() => Client, (cli) => cli.contato)
+    @ManyToOne(() => Client, (cli) => cli.contat)
     @JoinColumn()
-    cliente: Client
+    client: Client
 }

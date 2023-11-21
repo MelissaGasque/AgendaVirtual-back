@@ -1,21 +1,22 @@
-import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";  //  BeforeInsert, BeforeUpdate,
+import { BeforeInsert, BeforeUpdate, Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Contact } from "./index";
+import { getRounds, hashSync } from "bcryptjs";
 
 @Entity("clients")
 export class Client {
-    @PrimaryGeneratedColumn("increment")
-    id: number;
+    @PrimaryGeneratedColumn("uuid")
+    id: string;
 
     @Column({length: 40})
     full_name: string;
 
-    @Column({length: 15})
+    @Column({length: 15, unique:true})
     username: string;
 
-    @Column({length: 256})
+    @Column({length: 256, unique:true})
     email: string
 
-    @Column({length: 10})
+    @Column({length: 70})
     password: string
 
     @Column({length: 15})
@@ -27,16 +28,16 @@ export class Client {
     @CreateDateColumn({type:"date"})
     created_at: string
 
-    @OneToMany(() => Contact, (c) => c.cliente)
-    contato: Contact[]
+    @OneToMany(() => Contact, (c) => c.client)
+    contat: Contact[]
 
-    // @BeforeInsert()
-    // @BeforeUpdate()
+    @BeforeInsert()
+    @BeforeUpdate()
 
-    // hashPassword(){
-    //     const hasRounds: number = getRounds(this.password)
-    //     if(!hasRounds){
-    //         this.password = hashSync(this.password, 10)
-    //     }
-    // }
-}
+    hashPassword(){
+        const hasRounds: number = getRounds(this.password)
+        if(!hasRounds){
+            this.password = hashSync(this.password, 10)
+        }
+    }
+};
