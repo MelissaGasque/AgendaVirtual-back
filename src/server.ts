@@ -1,6 +1,6 @@
 import "dotenv/config";
-import { AppDataSource } from "./data_source";
-import app  from "./app"
+import { AppDataSource } from "./data-source";
+import app from "./app"
 
 AppDataSource.initialize()
     .then((): void => {
@@ -11,5 +11,5 @@ AppDataSource.initialize()
     })
     .catch((err: unknown): void => {
         console.error('Error during Data Source initialization', err);
-      });
-    
+    });
+

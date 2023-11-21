@@ -15,7 +15,7 @@ export const readAllClientsController = async (req: Request, res: Response): Pro
 
 // // Atualiza clientes  -> Apenas adminstradores ou dono da conta
 export const updateClientsController  = async (req: Request, res: Response): Promise<Response> => {
-    const clientId: number = Number(req.params.id)
+    const clientId: string = req.params.id
     const updateClient = req.body
     const client = await updateClientService(updateClient, clientId)
     return res.status(200).json(client)
@@ -23,7 +23,7 @@ export const updateClientsController  = async (req: Request, res: Response): Pro
 
 // // Deleta a conta do cliente
 export const deleteClientController = async (req: Request, res: Response): Promise<Response> => {
-    const clientId: number = Number(req.params.id)
+    const clientId: string = req.params.id
     await deleteClientService(clientId)
     return res.status(204).json()
 }

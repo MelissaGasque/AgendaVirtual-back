@@ -1,13 +1,15 @@
 import { Request, Response } from "express"
 import { createContactsService, deleteContacsService, readContactsService, updateContactsService } from "../services/contact.services"
-
+import { Client } from "../entities"
 
 
 //Criação de Contacts
 export const createContactsController = async (req: Request, res: Response): Promise<Response> => {
-    const contact = await createContactsService(req.body)
+  // const clientId: string = res.locals.decoded.sub
+  const contact = await createContactsService(req.body)
     return res.status(201).json(contact)
   }
+
 //Listagem dos Contacts
 export const readAllContactsController = async (req: Request, res: Response): Promise<Response> => {
     const contact = await readContactsService() 
@@ -16,15 +18,15 @@ export const readAllContactsController = async (req: Request, res: Response): Pr
 
 // // Atualiza Contacts
 export const updateContactsController  = async (req: Request, res: Response): Promise<Response> => {
-    const contactId: number = Number(req.params.id)
+    const contactId: string = req.params.id
     const updateContact = req.body
     const contact = await updateContactsService(updateContact, contactId)
     return res.status(200).json(contact)
 }
 
-// // Deleta a conta do contact
+// Deleta a conta do contact
 export const deleteContactsController = async (req: Request, res: Response): Promise<Response> => {
-    const contactId: number = Number(req.params.id)
+    const contactId = req.params.id
     await deleteContacsService(contactId)
     return res.status(204).json()
 }

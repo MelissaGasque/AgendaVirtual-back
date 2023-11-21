@@ -1,10 +1,9 @@
 import { z } from "zod";
-import { contactSchema, createContactSchema, updateContactschema } from "../schemas/contacts.schema";
+import { contactSchema, contactSchema1, createContactSchema, updateContactschema } from "../schemas/contacts.schema";
 
 type ContactsInterface = z.infer<typeof contactSchema>
+type ContactsInterface1 = z.infer<typeof contactSchema1>
 type CreateContactsInterface = z.infer<typeof createContactSchema>
-// type ReturnContactsInterface = z.infer<typeof returnClientSchema>
-// type ReadContactsInterface = z.infer<typeof readContactSchema>
 type UpdateContactsInterface = z.infer<typeof updateContactschema>
 
-export { ContactsInterface, CreateContactsInterface, UpdateContactsInterface }
+export { ContactsInterface, CreateContactsInterface, UpdateContactsInterface, ContactsInterface1 }
