@@ -15,4 +15,4 @@ Utilizou-se o framework Express para facilitar o desenvolvimento da API.
 O banco de dados utilizado foi PostgreSQL e a ORM utilizada foi o TypeORM
 
 
-TESTE
+TESTE TESTE
