@@ -1,5 +1,5 @@
-import "dotenv/config";
-import { AppDataSource } from "./data-source";
+import "dotenv/config"
+import { AppDataSource } from "./data-source"
 import app from "./app"
 
 AppDataSource.initialize()
@@ -10,6 +10,6 @@ AppDataSource.initialize()
         app.listen(PORT, (): void => console.log(`App running at port ${PORT}`))
     })
     .catch((err: unknown): void => {
-        console.error('Error during Data Source initialization', err);
-    });
+        console.error('Error during Data Source initialization', err)
+    })
 

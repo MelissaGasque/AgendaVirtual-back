@@ -1,5 +1,5 @@
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import { Client } from "./index";
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm"
+import { Client } from "./index"
 
 @Entity("contacts")
 export class Contact {
@@ -21,7 +21,7 @@ export class Contact {
     @CreateDateColumn({type:"date"})
     created_at: string
 
-    @ManyToOne(() => Client, (cli) => cli.contat)
+    @ManyToOne(() => Client, (cli) => cli.contat, {onDelete: "CASCADE"})
     @JoinColumn()
     client: Client
 }

@@ -1,32 +1,39 @@
-import { DeepPartial, Repository } from "typeorm";
-import { ClientsInterface, CreateClientInterface, ReturnClientInterface } from "../interfaces/Clients.interface";
-import { AppDataSource } from "../data-source";
-import { Client } from "../entities/index";
-import { readClientAdmSchema, returnClientSchema } from "../schemas/clients.schema";
-import { AppError } from "../errors/App.errors";
+import { DeepPartial, Repository } from "typeorm"
+import { ClientsInterface, CreateClientInterface, ReturnClientInterface } from "../interfaces/Clients.interface"
+import { AppDataSource } from "../data-source"
+import { Client } from "../entities/index"
+import { readClientAdmSchema, returnClientSchema } from "../schemas/clients.schema"
+import { AppError } from "../errors/App.errors"
+
 
 //Criação de Clientes
 export const createClientsService = async (payload: CreateClientInterface): Promise<ReturnClientInterface> => {
     const clientRepo: Repository<ClientsInterface> = AppDataSource.getRepository(Client)
-    const client = clientRepo.create(payload);
+    const client = clientRepo.create(payload)
     await clientRepo.save(client)
     return returnClientSchema.parse(client)
-};
+}
 
 //Listagem dos clientes -> Apenas administradores
 export const readClientsService = async (): Promise<ReturnClientInterface[]> => {
     const clientRepo: Repository<ClientsInterface> = AppDataSource.getRepository(Client)
-    return readClientAdmSchema.parse(await clientRepo.find());
-};
+    return readClientAdmSchema.parse(await clientRepo.find())
+}
+
+//Mostra cliente por id
+export const readClientIdService = async(clientId: string): Promise<ReturnClientInterface> => {
+    const clientRepo: Repository<ClientsInterface> = AppDataSource.getRepository(Client)
+    return returnClientSchema.parse(await clientRepo.findOneBy({ id: clientId }))
+}
 
 // Atualiza clientes  -> Apenas adminstradores ou dono da conta
 export const updateClientService = async (payload: DeepPartial<Client>, clientId: string): Promise<ReturnClientInterface> => {
-    const clientRepo: Repository<Client> | null = AppDataSource.getRepository(Client);
-    const client: Client | null = await clientRepo.findOneBy({ id: clientId });
+    const clientRepo: Repository<Client> | null = AppDataSource.getRepository(Client)
+    const client: Client | null = await clientRepo.findOneBy({ id: clientId })
 
-    const updateClient = await clientRepo.save({ ...client, ...payload });
+    const updateClient = await clientRepo.save({ ...client, ...payload })
     return returnClientSchema.parse(updateClient)
-};
+}
 
 // Deleta a conta do clientes
 export const deleteClientService = async (clientId: string): Promise<void> => {
@@ -39,4 +46,4 @@ export const deleteClientService = async (clientId: string): Promise<void> => {
 
     await clientRepo.remove(deleteClient)
 
-};
+}

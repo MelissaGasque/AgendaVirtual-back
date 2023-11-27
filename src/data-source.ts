@@ -1,6 +1,6 @@
 import 'reflect-metadata'
 import 'dotenv/config'
-import { DataSource, DataSourceOptions } from "typeorm";
+import { DataSource, DataSourceOptions } from "typeorm"
 import path from 'path'
 
 const dataSourceConfig = (): DataSourceOptions => {

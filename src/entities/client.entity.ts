@@ -1,6 +1,6 @@
-import { BeforeInsert, BeforeUpdate, Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { Contact } from "./index";
-import { getRounds, hashSync } from "bcryptjs";
+import { BeforeInsert, BeforeUpdate, Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm"
+import { Contact } from "./index"
+import { getRounds, hashSync } from "bcryptjs"
 
 @Entity("clients")
 export class Client {

@@ -12,7 +12,6 @@ export const usernameExists = async(req: Request, res:Response, next: NextFuncti
             throw new AppError("Username already exists", 409)
         }
         
-       
     }
  
     return next()
