@@ -11,7 +11,6 @@ export  const contactSchema = z.object({
     }).optional(),
     created_at: z.string(),
     clientId: z.string()
-    //client: clientsSchema
 })
 
 export  const contactSchemaNoClient = contactSchema.omit({clientId: true})

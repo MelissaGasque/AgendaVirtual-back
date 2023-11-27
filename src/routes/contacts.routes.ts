@@ -9,9 +9,9 @@ export const contactsRouter = Router()
 
 contactsRouter.use("/", verifyToken)
 contactsRouter.post("", bodyValidated(createContactSchema), emailContacts, createContactsController)
-contactsRouter.get("",  isAdmTrue, readAllContactsController)
+contactsRouter.get("", readAllContactsController)
 
-contactsRouter.use("/:id", checkContactsID, verifyToken, isAdmTrue)
+contactsRouter.use("/:id", checkContactsID, verifyToken)
 contactsRouter.patch("/:id", updateContactsController)
 contactsRouter.delete("/:id", deleteContactsController)
  

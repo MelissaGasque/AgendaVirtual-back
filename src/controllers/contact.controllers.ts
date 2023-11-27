@@ -11,21 +11,25 @@ export const createContactsController = async (req: Request, res: Response): Pro
 
 //Listagem dos Contacts
 export const readAllContactsController = async (req: Request, res: Response): Promise<Response> => {
-    const contact = await readContactsService() 
+    const { idToken } = res.locals.decoded
+    const contact = await readContactsService(idToken) 
     return res.status(200).json(contact)
   }
+
 
 // // Atualiza Contacts
 export const updateContactsController  = async (req: Request, res: Response): Promise<Response> => {
     const contactId: string = req.params.id
+    const { idToken } = res.locals.decoded
     const updateContact = req.body
-    const contact = await updateContactsService(updateContact, contactId)
+    const contact = await updateContactsService(updateContact, contactId, idToken)
     return res.status(200).json(contact)
 }
 
 // Deleta a conta do contact
 export const deleteContactsController = async (req: Request, res: Response): Promise<Response> => {
+  const { idToken } = res.locals.decoded
     const contactId = req.params.id
-    await deleteContacsService(contactId)
+    await deleteContacsService(contactId, idToken)
     return res.status(204).json()
 }
