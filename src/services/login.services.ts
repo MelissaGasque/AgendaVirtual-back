@@ -30,6 +30,4 @@ export const loginService = async (payload: LoginRequest): Promise<{token:string
     )
 
     return { "token": token,  "user":returnClientSchema.parse(client) }
-
-
 } 
