@@ -43,7 +43,12 @@ npm install
 
 Copie o conteúdo do .env.example e forneça os dados necessários para configurar o banco de dados PostgreSQL.
 
-
+* Crie e execute uma migração:
+```
+npm run typeorm migration:generate ./src/migrations/InitialMigration -- -d ./src/data-source.ts
+&
+npm run typeorm migration:run -- -d ./src/data-source
+```
 
 A execução da aplicação é feito por meio do:
 ```
