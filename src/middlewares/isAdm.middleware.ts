@@ -8,7 +8,7 @@ export const isAdmTrue = async(req: Request, res: Response, next: NextFunction) 
     if (admin === true) return next()
 
     if ( id !== sub ) {
-      throw new AppError("Insufficient permission", 403)
+      throw new AppError("Permissão insufieciente", 403)
     }
 
     return next()

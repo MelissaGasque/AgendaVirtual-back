@@ -9,7 +9,7 @@ export const emailExists = async(req: Request, res:Response, next: NextFunction)
         const emailAlreadyExist = await AppDataSource.getRepository(Client).findOneBy({ email })
     
         if(emailAlreadyExist ){
-            throw new AppError("Email already exists", 409)
+            throw new AppError("Esse email já existe", 409)
         }
         
        
@@ -23,7 +23,7 @@ export const emailContacts = async(req: Request, res:Response, next: NextFunctio
         const emailAlreadyExist = await AppDataSource.getRepository(Contact).findOneBy({ email })
     
         if(emailAlreadyExist ){
-            throw new AppError("Email already exists", 409)
+            throw new AppError("Esse email já existe", 409)
         }
         
        

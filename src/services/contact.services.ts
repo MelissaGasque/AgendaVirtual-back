@@ -54,7 +54,7 @@ export const deleteContacsService = async (contactId: string): Promise<void> => 
     const deleteContact = await contactsRepo.findOneBy({ id: contactId })
 
     if (!deleteContact) {
-        throw new AppError("Contact not found", 404)
+        throw new AppError("Contato não encontrado", 404)
     }
     await contactsRepo.remove(deleteContact)
 }

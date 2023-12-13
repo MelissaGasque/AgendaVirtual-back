@@ -41,7 +41,7 @@ export const deleteClientService = async (clientId: string): Promise<void> => {
     const deleteClient = await clientRepo.findOneBy({ id: clientId })
 
     if (!deleteClient) {
-        throw new AppError("Client not found", 404)
+        throw new AppError("cliente não encontrado", 404)
     }
 
     await clientRepo.remove(deleteClient)

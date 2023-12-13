@@ -9,7 +9,7 @@ export const usernameExists = async(req: Request, res:Response, next: NextFuncti
         const usernameAlreadyExist = await AppDataSource.getRepository(Client).findOneBy({ username })
     
         if(usernameAlreadyExist){
-            throw new AppError("Username already exists", 409)
+            throw new AppError("Usuário já existente", 409)
         }
         
     }
